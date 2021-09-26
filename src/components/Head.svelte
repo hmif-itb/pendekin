@@ -1,10 +1,9 @@
 <script>
-    let constant = "const ";
+  let constant = 'const ';
 </script>
 
-
 <section>
-    <pre>
+  <pre>
         <code style="color: #6c99bb">
             {"const "}
         </code>
@@ -30,19 +29,18 @@
 </section>
 
 <style>
-    section {
-        text-align: center;
-		padding: 1em;
-		margin: 200px 0;
-        width: 100%;
-        background-color: black;
-        
-    }
-    code {
-        font-size: 5em;
-        font-weight: 100;
-    }
-    pre {
-        display: inline-flex;
-    }
+  section {
+    text-align: center;
+    padding: 1em;
+    margin: 200px 0;
+    width: 100%;
+    background-color: black;
+  }
+  code {
+    font-size: 5em;
+    font-weight: 100;
+  }
+  pre {
+    display: inline-flex;
+  }
 </style>

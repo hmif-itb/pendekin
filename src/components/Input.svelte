@@ -1,12 +1,12 @@
 <script>
-    export let value;
-    export let placeholder;
+  export let value;
+  export let placeholder;
 </script>
 
 <label for="route-input" class="route-inp">
-    <input bind:value id="route-input" type="text" placeholder="&nbsp;"/>
-    <span class="label">{placeholder}</span>
-    <span class="focus-bg"></span>
+  <input bind:value id="route-input" type="text" placeholder="&nbsp;" />
+  <span class="label">{placeholder}</span>
+  <span class="focus-bg" />
 </label>
 
 <style lang="sass">
