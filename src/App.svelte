@@ -1,6 +1,6 @@
 <script>
   import Form from './components/Form.svelte';
-  import Head from './components/Head.svelte';
+  import Header from './components/Header.svelte';
   import Loading from './components/Loading.svelte';
   import Footer from './components/Footer.svelte';
 
@@ -51,7 +51,7 @@
 <main>
   <h1>pendekin</h1>
   <h2>by HMIF Tech</h2>
-  <Head />
+  <Header />
   <Form onSubmit={handleSubmit} {fields} />
   <Loading {loading} />
   <Footer />

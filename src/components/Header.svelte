@@ -28,15 +28,19 @@
   section {
     text-align: center;
     padding: 1em;
-    margin: 200px 0;
+    margin: 100px 0;
     width: 100%;
+    height: 400px;
     background-color: black;
   }
   code {
-    font-size: 5em;
+    font-size: 7em;
     font-weight: 100;
   }
   pre {
-    display: inline-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
   }
 </style>

@@ -24,7 +24,7 @@
 
 <style>
   :global(input, select) {
-    margin: 5px;
+    margin: 10px;
   }
   .form-wrapper {
     margin-bottom: 50px;
