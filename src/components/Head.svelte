@@ -1,31 +1,27 @@
-<script>
-  let constant = 'const ';
-</script>
-
 <section>
   <pre>
-        <code style="color: #6c99bb">
-            {"const "}
-        </code>
-        <code style="color: #9e86c8"> 
-            {"url"}
-        </code>
-        <code style="color: #ff3e00">
-            {" = `"}
-        </code>
-        <code style="color: #e5b567">
-            hmif.link/
-        </code>
-        <code style="color: #ff3e00">
-            {"${"}    
-        </code>
-        <code style="color: white">
-            route
-        </code>
-        <code style="color: #ff3e00">
-            {"}`"}
-        </code>
-    </pre>
+    <code style="color: #6c99bb">
+      {"const "}
+    </code>
+    <code style="color: #9e86c8"> 
+      {"url"}
+    </code>
+    <code style="color: #ff3e00">
+      {" = `"}
+    </code>
+    <code style="color: #e5b567">
+      hmif.link/
+    </code>
+    <code style="color: #ff3e00">
+      {"${"}    
+    </code>
+    <code style="color: white">
+      route
+    </code>
+    <code style="color: #ff3e00">
+      {"}`"}
+    </code>
+  </pre>
 </section>
 
 <style>
