@@ -8,7 +8,6 @@
 			type: "Input",
 			value: "",
 			placeholder: "Enter the route...",
-			label: "Create your route here!",
 		},
 	];
 
@@ -25,11 +24,6 @@
 		}}
 		{fields}
 	/>
-	<pre>
-		<code>
-			{JSON.stringify(result, 0, 2)}
-		</code>
-	</pre>
 </main>
 
 <style>
