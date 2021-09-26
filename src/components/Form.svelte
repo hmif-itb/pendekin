@@ -11,17 +11,22 @@
   const handleSubmit = () => onSubmit(fieldsToObject(fields));
 </script>
 
-<form on:submit|preventDefault={() => handleSubmit(fields)}>
-  {#each fields as field}
-    {#if field.type === 'Input'}
-      <Input bind:value={field.value} placeholder={field.placeholder} />
-    {/if}
-  {/each}
-  <Button type="submit" text="Submit" />
-</form>
+<div class="form-wrapper">
+  <form on:submit|preventDefault={() => handleSubmit(fields)}>
+    {#each fields as field}
+      {#if field.type === 'Input'}
+        <Input bind:value={field.value} placeholder={field.placeholder} />
+      {/if}
+    {/each}
+    <Button type="submit" text="Submit" />
+  </form>
+</div>
 
 <style>
   :global(input, select) {
     margin: 5px;
+  }
+  .form-wrapper {
+    margin-bottom: 50px;
   }
 </style>

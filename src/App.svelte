@@ -1,6 +1,8 @@
 <script>
   import Form from './components/Form.svelte';
   import Head from './components/Head.svelte';
+  import Loading from './components/Loading.svelte';
+  import Footer from './components/Footer.svelte';
 
   let fields = [
     {
@@ -17,7 +19,11 @@
     }
   ];
 
+  let loading = false;
+
   const handleSubmit = body => {
+    loading = true;
+
     const process = proc;
     const url = process.env.API_URL;
 
@@ -33,13 +39,13 @@
       })
       .then(data => {
         console.log(data);
+        loading = false;
       })
       .catch(err => {
         console.log(err);
+        loading = false;
       });
   };
-
-  let result = {};
 </script>
 
 <main>
@@ -47,6 +53,8 @@
   <h2>by HMIF Tech</h2>
   <Head />
   <Form onSubmit={handleSubmit} {fields} />
+  <Loading {loading} />
+  <Footer />
 </main>
 
 <style>
