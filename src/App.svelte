@@ -4,12 +4,40 @@
 
 	let fields = [
 		{
+			name: "url",
+			type: "Input",
+			value: "",
+			placeholder: "Enter the url...",
+		},
+		{
 			name: "route",
 			type: "Input",
 			value: "",
 			placeholder: "Enter the route...",
 		},
 	];
+
+	const handleSubmit = (body) => {
+		const process = proc;
+		const url = process.env.API_URL;
+
+		const config = {
+			body: JSON.stringify(body),
+			method: "post",
+			headers: {"Content-type": "application/json"}
+		}
+
+		fetch(url, config)
+			.then(res => {
+				return res.json()
+			})
+			.then(data => {
+				console.log(data)
+			})
+			.catch(err => {
+				console.log(err)
+			});
+	}
 
 	let result = {};
 </script>
@@ -19,9 +47,7 @@
 	<h2>by HMIF Tech</h2>
 	<Head/>
 	<Form
-		onSubmit={(body) => {
-			result = body;
-		}}
+		onSubmit={handleSubmit}
 		{fields}
 	/>
 </main>
