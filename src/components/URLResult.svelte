@@ -48,4 +48,9 @@
     background-color: #a82900;
     cursor: pointer;
   }
+
+  input {
+    border-radius: 50px;
+    width: 300px;
+  }
 </style>

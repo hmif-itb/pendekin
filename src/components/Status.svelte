@@ -35,7 +35,7 @@
 <style>
   p {
     font-size: 20px;
-    font-weight: 200;
+    font-weight: 400;
   }
 
   .wrapper {
