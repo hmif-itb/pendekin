@@ -37,7 +37,7 @@
   }
   .code {
     display: flex;
-    font-size: 7em;
+    font-size: 6em;
     font-weight: 100;
     font-family: monospace;
     width: 32ch;
