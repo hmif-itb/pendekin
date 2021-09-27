@@ -4,7 +4,7 @@
 <style>
   h1 {
     color: black;
-    font-size: 6em;
+    font-size: 4em;
     margin-bottom: 0px;
   }
 
