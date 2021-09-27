@@ -4,18 +4,21 @@
   export let loading;
   export let apiResponse;
   export let shortUrl;
-  export let invalid;
+  export let invalidUrl;
+  export let invalidRoute;
   export let err;
 </script>
 
 <div class="wrapper">
-  {#if invalid === true}
+  {#if invalidUrl === true}
     <p>
       url is not valid, make sure it starts with
       <code>http://</code>
       or
       <code>https://</code>
     </p>
+  {:else if invalidRoute === true}
+    <p>please fill the route, don't leave it empty</p>
   {:else if loading === true}
     <div class="loader" />
   {:else if loading === false && apiResponse !== null}

@@ -23,20 +23,31 @@
   let loading = false;
   let apiResponse = null;
   let shortUrl;
-  let invalid = false;
+  let invalidUrl = false;
+  let invalidRoute = false;
   let err = false;
 
   const isValidUrl = url => {
     return url.startsWith('http://') || url.startsWith('https://');
   };
 
+  const isValidRoute = route => {
+    return route !== '';
+  };
+
   const handleSubmit = body => {
     if (!isValidUrl(body.url)) {
-      invalid = true;
+      invalidUrl = true;
       return;
     }
 
-    invalid = false;
+    if (!isValidRoute(body.route)) {
+      invalidRoute = true;
+      return;
+    }
+
+    invalidUrl = false;
+    invalidRoute = false;
     err = false;
     shortUrl = `hmif.link/${body.route}`;
     loading = true;
@@ -70,7 +81,14 @@
   <Header />
   <Code />
   <Form onSubmit={handleSubmit} {fields} />
-  <Status {loading} {invalid} {apiResponse} {shortUrl} {err} />
+  <Status
+    {loading}
+    {invalidUrl}
+    {invalidRoute}
+    {apiResponse}
+    {shortUrl}
+    {err}
+  />
   <Footer />
 </main>
 
