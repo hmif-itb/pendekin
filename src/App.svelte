@@ -100,10 +100,4 @@
     left: 0;
     width: 100%;
   }
-
-  @media (min-width: 640px) {
-    main {
-      max-width: none;
-    }
-  }
 </style>
