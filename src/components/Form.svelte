@@ -18,7 +18,7 @@
         <Input bind:value={field.value} placeholder={field.placeholder} />
       {/if}
     {/each}
-    <Button type="submit" text="Submit" />
+    <Button type="submit" text="Shorten!" />
   </form>
 </div>
 
