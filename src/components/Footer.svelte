@@ -1,4 +1,6 @@
-<div class="footer-wrapper">HMIF Tech 2021.</div>
+<div class="footer-wrapper">
+  <em> By HMIF Tech 2021 </em>
+</div>
 
 <style>
   .footer-wrapper {

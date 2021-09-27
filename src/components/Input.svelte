@@ -6,7 +6,6 @@
 <label for="route-input" class="route-inp">
   <input bind:value id="route-input" type="text" placeholder="&nbsp;" />
   <span class="label">{placeholder}</span>
-  <span class="focus-bg" />
 </label>
 
 <style lang="sass">
@@ -32,17 +31,6 @@
             transform: translate3d(0, 0, 0)
             transition: all .2s ease
             pointer-events: none
-    
-        .focus-bg
-            position: absolute
-            top: 0
-            left: 0
-            width: 100%
-            height: 100%
-            background: rgba($dark, .05)
-            z-index: -1
-            transform: scaleX(0)
-            transform-origin: left
     
         input
             -webkit-appearance: none
@@ -75,7 +63,4 @@
                 + .label
                     color: $primary
                     transform: translate3d(0, -12px, 0) scale(.75)
-                    + .focus-bg
-                        transform: scaleX(1)
-                        transition: all .1s ease
 </style>

@@ -1,8 +1,9 @@
 <script>
   import Form from './components/Form.svelte';
-  import Header from './components/Header.svelte';
+  import Code from './components/Code.svelte';
   import Loading from './components/Loading.svelte';
   import Footer from './components/Footer.svelte';
+  import Header from './components/Header.svelte';
 
   let fields = [
     {
@@ -49,9 +50,8 @@
 </script>
 
 <main>
-  <h1>pendekin</h1>
-  <h2>by HMIF Tech</h2>
   <Header />
+  <Code />
   <Form onSubmit={handleSubmit} {fields} />
   <Loading {loading} />
   <Footer />
@@ -64,18 +64,6 @@
     top: 0;
     left: 0;
     width: 100%;
-  }
-
-  h1 {
-    color: black;
-    font-size: 6em;
-    margin-bottom: 0px;
-  }
-
-  h2 {
-    color: #ff3e00;
-    font-size: 2em;
-    margin-top: 0px;
   }
 
   @media (min-width: 640px) {
