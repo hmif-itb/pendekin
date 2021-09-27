@@ -1,7 +1,7 @@
 <script>
   import Form from './components/Form.svelte';
   import Code from './components/Code.svelte';
-  import Loading from './components/Loading.svelte';
+  import Status from './components/Status.svelte';
   import Footer from './components/Footer.svelte';
   import Header from './components/Header.svelte';
 
@@ -21,10 +21,25 @@
   ];
 
   let loading = false;
+  let apiResponse = null;
+  let shortUrl;
+  let invalid = false;
+  let err = false;
+
+  const isValidUrl = url => {
+    return url.startsWith('http://') || url.startsWith('https://');
+  };
 
   const handleSubmit = body => {
-    loading = true;
+    if (!isValidUrl(body.url)) {
+      invalid = true;
+      return;
+    }
 
+    invalid = false;
+    err = false;
+    shortUrl = `hmif.link/${body.route}`;
+    loading = true;
     const process = proc;
     const url = process.env.API_URL;
 
@@ -40,10 +55,12 @@
       })
       .then(data => {
         console.log(data);
+        apiResponse = data;
         loading = false;
       })
       .catch(err => {
         console.log(err);
+        err = true;
         loading = false;
       });
   };
@@ -53,7 +70,7 @@
   <Header />
   <Code />
   <Form onSubmit={handleSubmit} {fields} />
-  <Loading {loading} />
+  <Status {loading} {invalid} {apiResponse} {shortUrl} {err} />
   <Footer />
 </main>
 
