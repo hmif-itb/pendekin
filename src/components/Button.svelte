@@ -1,11 +1,18 @@
 <script>
   export let type;
   export let text;
+  export let handleClick;
 </script>
 
-<button {type}>
-  {text}
-</button>
+{#if handleClick}
+  <button on:click={handleClick}>
+    {text}
+  </button>
+{:else}
+  <button {type}>
+    {text}
+  </button>
+{/if}
 
 <style>
   button {

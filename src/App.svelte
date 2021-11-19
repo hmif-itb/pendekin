@@ -3,14 +3,18 @@
   import {user} from './context/auth';
   import Header from './components/Header.svelte';
   import SignInButton from './components/SignInButton.svelte';
+
+  const {subscribe} = user;
+  let userNow = null;
+  subscribe(u => (userNow = u ? (u.profile ? u.profile.email : '') : ''));
 </script>
 
 <main>
   <Header />
-  {#if $user}
-    <Main />
-  {:else}
+  {#if userNow === ''}
     <SignInButton />
+  {:else}
+    <Main />
   {/if}
 </main>
 

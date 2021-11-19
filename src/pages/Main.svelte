@@ -5,6 +5,13 @@
   import Footer from '../components/Footer.svelte';
   import Header from '../components/Header.svelte';
   import Logout from '../components/Logout.svelte';
+  import {user} from '../context/auth';
+
+  let userEmail;
+  const {subscribe} = user;
+  subscribe(u => {
+    userEmail = u ? (u.profile ? u.profile.email : null) : null;
+  });
 
   let fields = [
     {
@@ -80,7 +87,7 @@
 
 <main>
   <Header />
-  <Logout />
+  <Logout currentUser={userEmail} />
   <Code />
   <Form onSubmit={handleSubmit} {fields} />
   <Status
