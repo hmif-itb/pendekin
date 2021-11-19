@@ -1,8 +1,8 @@
 <script>
-  import Main from './pages/Main.svelte';
-  import {user} from './context/auth';
-  import Header from './components/Header.svelte';
-  import SignInButton from './components/SignInButton.svelte';
+  import Header from '../components/Header.svelte';
+  import Main from './Main.svelte';
+  import SignInButton from '../components/SignInButton.svelte';
+  import {user} from '../context/auth';
 </script>
 
 <main>
