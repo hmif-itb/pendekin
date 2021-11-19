@@ -1,5 +1,6 @@
 <script>
   import {user} from '../context/auth';
+  import Button from './Button.svelte';
 
   let {auth2, update} = user;
 
@@ -71,12 +72,8 @@
   <script src="https://apis.google.com/js/api.js"></script>
 </svelte:head>
 
-<div id="gSignInWrapper">
-  <div id="loginBtn" class="customGPlusSignIn">
-    <span class="icon" />
-    <span class="buttonText">Sign in with student email</span>
-  </div>
-</div>
+<Button id="loginBtn" text="Sign in with email std!" />
+
 {#if invalidSignInStatus}
   <div id="invalidWrapper">
     <div id="name">
@@ -94,34 +91,5 @@
   }
   #emoji {
     font-size: 50px;
-  }
-  #loginBtn {
-    display: inline-block;
-    background: white;
-    color: #444;
-    width: 300px;
-    height: 42px;
-    border-radius: 5px;
-    border: thin solid #888;
-    white-space: nowrap;
-    transition: 0.5s;
-  }
-  #loginBtn:hover {
-    cursor: pointer;
-    background: rgb(238, 238, 238);
-  }
-  span.icon {
-    background: url('/identity/sign-in/hmif.png') transparent 0.5px 5% no-repeat;
-    display: inline-block;
-    vertical-align: middle;
-    width: 42px;
-    height: 42px;
-  }
-  span.buttonText {
-    display: inline-block;
-    vertical-align: middle;
-    padding-left: 42px;
-    padding-right: 42px;
-    font-size: 14px;
   }
 </style>

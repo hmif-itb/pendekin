@@ -2,9 +2,14 @@
   export let type;
   export let text;
   export let handleClick;
+  export let id;
 </script>
 
-{#if handleClick}
+{#if id}
+  <button {id}>
+    {text}
+  </button>
+{:else if handleClick}
   <button on:click={handleClick}>
     {text}
   </button>
