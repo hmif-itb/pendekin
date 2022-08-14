@@ -2,7 +2,7 @@
   import URLResult from './URLResult.svelte';
 
   export let loading;
-  export let apiResponse;
+  export let responseCode;
   export let shortUrl;
   export let invalidUrl;
   export let invalidRoute;
@@ -21,13 +21,17 @@
     <p>please fill the route, don't leave it empty</p>
   {:else if loading === true}
     <div class="loader" />
-  {:else if loading === false && apiResponse !== null}
-    {#if apiResponse.status === 'SUCCESS'}
+  {:else if loading === false && responseCode !== null}
+    {#if responseCode === 201}
       <p>your url has been shortened! Congrats 😄</p>
       <URLResult url={shortUrl} />
-    {:else if apiResponse.status === 'FAILED'}
+    {:else if responseCode === 409}
       <p>
         shortlink <code>{shortUrl}</code> already exist, try another route!
+      </p>
+    {:else if responseCode === 400}
+      <p>
+        error occured, please try again!
       </p>
     {/if}
   {:else if err}

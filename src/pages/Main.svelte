@@ -29,7 +29,7 @@
   ];
 
   let loading = false;
-  let apiResponse = null;
+  let responseCode = 0;
   let shortUrl;
   let invalidUrl = false;
   let invalidRoute = false;
@@ -43,13 +43,13 @@
     return route !== '';
   };
 
-  const handleSubmit = body => {
-    if (!isValidUrl(body.url)) {
+  const handleSubmit = form => {
+    if (!isValidUrl(form.url)) {
       invalidUrl = true;
       return;
     }
 
-    if (!isValidRoute(body.route)) {
+    if (!isValidRoute(form.route)) {
       invalidRoute = true;
       return;
     }
@@ -57,9 +57,10 @@
     invalidUrl = false;
     invalidRoute = false;
     err = false;
-    shortUrl = `s.hmif.dev/${body.route}`;
+    shortUrl = `s.hmif.dev/${form.route}`;
     loading = true;
 
+    const body = {...form, email: userEmail};
     const config = {
       body: JSON.stringify(body),
       method: 'post',
@@ -68,10 +69,8 @@
 
     fetch('/', config)
       .then(res => {
-        return res.json();
-      })
-      .then(data => {
-        apiResponse = data;
+        console.log(res);
+        responseCode = res.status;
       })
       .catch(err => {
         console.log(err);
@@ -79,7 +78,7 @@
       })
       .finally(() => {
         loading = false;
-      })
+      });
   };
 </script>
 
@@ -92,7 +91,7 @@
     {loading}
     {invalidUrl}
     {invalidRoute}
-    {apiResponse}
+    {responseCode}
     {shortUrl}
     {err}
   />
