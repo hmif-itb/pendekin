@@ -59,8 +59,6 @@
     err = false;
     shortUrl = `hmif.link/${body.route}`;
     loading = true;
-    const process = proc;
-    const url = process.env.API_URL;
 
     const config = {
       body: JSON.stringify(body),
@@ -68,7 +66,7 @@
       headers: {'Content-type': 'application/json'}
     };
 
-    fetch(url, config)
+    fetch('/', config)
       .then(res => {
         return res.json();
       })
