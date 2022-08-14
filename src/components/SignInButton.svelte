@@ -2,74 +2,64 @@
   import {user} from '../context/auth';
   import Button from './Button.svelte';
 
-  let {auth2, update} = user;
+  let {update} = user;
 
-  const process = proc;
-  const client_id = process.env.CLIENT_ID;
-
-  let invalidSignInStatus = '';
+  let invalidSignInStatus = false;
   let invalidEmail = '';
   let angryEmoji = '';
   const emojis = ['😤', '😬', '💀', '😭', '😱'];
   const random = x => Math.floor(x * Math.random());
 
-  window.onLoadCallback = () => {
-    gapi.load('auth2', () => {
-      auth2 = gapi.auth2.init({
-        client_id: client_id,
-        cookiepolicy: 'single_host_origin',
-        scope: 'profile'
-      });
-      auth2.isSignedIn.listen(loggedIn => {
-        if (loggedIn) {
-          invalidSignInStatus = false;
-          const u = auth2.currentUser.get();
-          const profile = u.getBasicProfile();
-          const email = profile.getEmail();
-          if (email.split('@')[1] === 'std.stei.itb.ac.id') {
-            update(() => ({
-              profile: {
-                id: profile.getId(),
-                name: profile.getName(),
-                image: profile.getImageUrl(),
-                email: profile.getEmail()
-              },
-              token: u.getAuthResponse().id_token
-            }));
-          } else {
-            invalidSignInStatus = true;
-            invalidEmail = email;
-            angryEmoji = emojis[random(emojis.length)];
-            auth2.signOut().then(() => {});
-          }
-        } else {
-          update(() => {});
-        }
-      });
-      attachSignin(document.getElementById('loginBtn'));
-    });
+  /**
+   * Method to parse JWT
+   * Taken from: https://stackoverflow.com/a/38552302
+   * @param {string} jwt
+   */
+  function parseJwt(jwt) {
+    const base64Url = jwt.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
 
-    const attachSignin = element => {
-      auth2.attachClickHandler(
-        element,
-        {},
-        function () {},
-        function (error) {
-          alert(JSON.stringify(error, undefined, 2));
-        }
-      );
-    };
-  };
+    return JSON.parse(jsonPayload);
+  }
+
+  function handleCredentialResponse(response) {
+    const jwt = response.credential;
+
+    invalidSignInStatus = false;
+    const profile = parseJwt(jwt);
+    const email = profile.email;
+    if (email.split('@')[1] === 'std.stei.itb.ac.id') {
+      update(() => ({
+        profile: {
+          name: profile.name,
+          image: profile.picture,
+          email: profile.email,
+        },
+        token: jwt,
+      }));
+    } else {
+      invalidSignInStatus = true;
+      invalidEmail = email;
+      angryEmoji = emojis[random(emojis.length)];
+    }
+  }
+  window.onload = function () {
+    google.accounts.id.initialize({
+      client_id: "339709464019-e67j1a3qp8ld22tho6l4u228k6g4k94v.apps.googleusercontent.com",
+      callback: handleCredentialResponse
+    });
+    google.accounts.id.renderButton(
+      document.getElementById("loginBtn"),
+      { theme: "outline", size: "large" }  // customization attributes
+    );
+  }
 </script>
 
 <svelte:head>
-  <script src="https://apis.google.com/js/api:client.js" async defer></script>
-  <script
-    src="https://apis.google.com/js/platform.js?onload=onLoadCallback"
-    async
-    defer>
-  </script>
-  <script src="https://apis.google.com/js/api.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
 </svelte:head>
 
 <Button id="loginBtn" text="Sign in with email std!" />
@@ -78,7 +68,7 @@
   <div id="invalidWrapper">
     <div id="name">
       Attempting to sign in with <strong>{invalidEmail}</strong>. Please use
-      your student email (<em>std.stei.itb.ac.id</em>)!
+      your STEI ITB student email (<em>std.stei.itb.ac.id</em>)!
     </div>
     <div id="emoji">{angryEmoji}</div>
   </div>
