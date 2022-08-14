@@ -1,5 +1,5 @@
 <h1>pendekin</h1>
-<h2>by HMIF Tech</h2>
+<h2>by HMIF TIE</h2>
 
 <style>
   h1 {

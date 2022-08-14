@@ -1,5 +1,5 @@
 <div class="footer-wrapper">
-  <em> By HMIF Tech 2021 </em>
+  <em> By HMIF TIE 2022 </em>
 </div>
 
 <style>

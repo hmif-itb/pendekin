@@ -57,7 +57,7 @@
     invalidUrl = false;
     invalidRoute = false;
     err = false;
-    shortUrl = `hmif.link/${body.route}`;
+    shortUrl = `s.hmif.dev/${body.route}`;
     loading = true;
 
     const config = {
@@ -71,15 +71,15 @@
         return res.json();
       })
       .then(data => {
-        console.log(data);
         apiResponse = data;
-        loading = false;
       })
       .catch(err => {
         console.log(err);
         err = true;
+      })
+      .finally(() => {
         loading = false;
-      });
+      })
   };
 </script>
 

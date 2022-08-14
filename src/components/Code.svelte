@@ -10,7 +10,7 @@
       {'= `'}
     </span>
     <span style="color: #e5b567">
-      {'hmif.link/'}
+      {'s.hmif.dev/'}
     </span>
     <span style="color: #ff3e00">
       {'${'}
@@ -40,7 +40,7 @@
     font-size: 4em;
     font-weight: 100;
     font-family: monospace;
-    width: 32ch;
+    width: 33ch;
     animation: typing 3s steps(32), blink 0.5s step-end infinite alternate;
     white-space: nowrap;
     overflow: hidden;
