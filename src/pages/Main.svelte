@@ -8,9 +8,15 @@
   import {user} from '../context/auth';
 
   let userEmail;
+  let userToken;
   const {subscribe} = user;
   subscribe(u => {
-    userEmail = u ? (u.profile ? u.profile.email : null) : null;
+    if (u) {
+      if (u.profile) {
+        userEmail = u.profile.email;
+      }
+      userToken = u.token;
+    }
   });
 
   let fields = [
@@ -64,7 +70,10 @@
     const config = {
       body: JSON.stringify(body),
       method: 'post',
-      headers: {'Content-type': 'application/json'}
+      headers: {
+        'Authorization': 'Bearer ' + userToken,
+        'Content-type': 'application/json',
+      }
     };
 
     fetch('/', config)
