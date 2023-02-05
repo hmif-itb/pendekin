@@ -51,6 +51,7 @@
 
   input {
     border-radius: 50px;
+    color: black;
     width: 300px;
   }
 </style>

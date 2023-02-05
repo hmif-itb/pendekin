@@ -1,6 +1,6 @@
-<div class="footer-wrapper">
-  <em> By HMIF TIE 2022 </em>
-</div>
+<footer class="footer-wrapper">
+  <em> By HMIF TIE 2023 </em>
+</footer>
 
 <style>
   .footer-wrapper {
@@ -11,5 +11,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    bottom: 0;
   }
 </style>

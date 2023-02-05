@@ -1,8 +1,6 @@
 <script>
   import Form from '../components/Form.svelte';
-  import Code from '../components/Code.svelte';
   import Status from '../components/Status.svelte';
-  import Footer from '../components/Footer.svelte';
   import Header from '../components/Header.svelte';
   import Logout from '../components/Logout.svelte';
   import {user} from '../context/auth';
@@ -24,13 +22,13 @@
       name: 'url',
       type: 'Input',
       value: '',
-      placeholder: 'Enter the url...'
+      placeholder: 'URL yang mau dipendekin (contoh: https://hmif.dev)'
     },
     {
       name: 'route',
       type: 'Input',
       value: '',
-      placeholder: 'Enter the route...'
+      placeholder: 'Route/nama pendek: (contoh: website-resmi-hmif)'
     }
   ];
 
@@ -94,7 +92,8 @@
 <main>
   <Header />
   <Logout currentUser={userEmail} />
-  <Code />
+<!--  <Code />-->
+  <hr style="margin: 2rem" />
   <Form onSubmit={handleSubmit} {fields} />
   <Status
     {loading}
@@ -104,7 +103,6 @@
     {shortUrl}
     {err}
   />
-  <Footer />
 </main>
 
 <style>

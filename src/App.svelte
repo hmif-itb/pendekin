@@ -2,6 +2,7 @@
   import Main from './pages/Main.svelte';
   import {user} from './context/auth';
   import Header from './components/Header.svelte';
+  import Footer from './components/Footer.svelte';
   import SignInButton from './components/SignInButton.svelte';
 
   const {subscribe} = user;
@@ -16,6 +17,7 @@
   {:else}
     <Main />
   {/if}
+  <Footer />
 </main>
 
 <style>
@@ -25,5 +27,6 @@
     top: 0;
     left: 0;
     width: 100%;
+    min-height: 100vh;
   }
 </style>
